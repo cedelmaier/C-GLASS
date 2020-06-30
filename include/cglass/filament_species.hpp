@@ -15,6 +15,7 @@
 #include "filament_barrier_crossing_analysis.hpp"
 #include "filament_incoming_outgoing_angle_analysis.hpp"
 #include "filament_mean_squared_displacement_analysis.hpp"
+#include "filament_anisotropy_density_analysis.hpp"
 
 typedef Analysis<Filament, species_id::filament> FilamentAnalysis;
 

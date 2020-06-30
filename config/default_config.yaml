@@ -198,6 +198,9 @@ filament:                            # Parameters unique to filament class of ob
   flocking_analysis: [false, bool]  # post-process analysis of measuring flocking filaments.
                                     # generates output file giving number of flocking filaments as
                                     # well as number of exterior and interior flocking filaments.
+  anisotropy_density_analysis: [false, bool] # post-process analysis of virial anisotropy density per
+                                             # interaction as a function of separation (see Blackwell
+                                             # 2016)
   flock_polar_min: [0.5, double]       # Polar order cutoff used for determining whether an object 
                                        # is in a flocking state.
   flock_contact_min: [0.5, double]     # Contact number cutoff used for flocking determination.

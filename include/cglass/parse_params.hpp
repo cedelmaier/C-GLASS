@@ -375,6 +375,8 @@ species_base_parameters *parse_species_params(std::string sid,
       params.crossing_analysis = jt->second.as<bool>();
       } else if (param_name.compare("flocking_analysis")==0) {
       params.flocking_analysis = jt->second.as<bool>();
+      } else if (param_name.compare("anisotropy_density_analysis")==0) {
+      params.anisotropy_density_analysis = jt->second.as<bool>();
       } else if (param_name.compare("flock_polar_min")==0) {
       params.flock_polar_min = jt->second.as<double>();
       } else if (param_name.compare("flock_contact_min")==0) {

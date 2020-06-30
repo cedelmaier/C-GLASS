@@ -57,6 +57,7 @@
   default_config["filament"]["orientation_corr_n_steps"] = "1000";
   default_config["filament"]["crossing_analysis"] = "false";
   default_config["filament"]["flocking_analysis"] = "false";
+  default_config["filament"]["anisotropy_density_analysis"] = "false";
   default_config["filament"]["flock_polar_min"] = "0.5";
   default_config["filament"]["flock_contact_min"] = "0.5";
   default_config["filament"]["highlight_flock"] = "false";

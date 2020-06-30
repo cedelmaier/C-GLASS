@@ -304,4 +304,8 @@ void FilamentSpecies::LoadAnalysis() {
     FilamentAnalysis *crossing = new BarrierCrossingAnalysis;
     analysis_.push_back(crossing);
   }
+  if (sparams_.anisotropy_density_analysis) {
+    FilamentAnalysis *anisotropy = new AnisotropyDensityAnalysis;
+    analysis_.push_back(anisotropy);
+  }
 }

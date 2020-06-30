@@ -76,6 +76,7 @@ class Mesh : public Object {
   virtual double const GetDrTot();
   virtual void ZeroDrTot();
   virtual void SetPosition(double const *const new_pos);
+  virtual void GetInteractions(std::vector<object_interaction> &ixs);
   //virtual std::vector<Interaction *> *GetInteractions();
   virtual void ClearInteractions();
   virtual void GetAvgPosition(double *ap);

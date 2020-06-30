@@ -574,13 +574,21 @@ double const Mesh::GetDrTot() {
   return dr_tot_;
 }
 
-// std::vector<Interaction *> *Mesh::GetInteractions() {
-// for (bond_iterator bond = bonds_.begin(); bond != bonds_.end(); ++bond) {
-// std::vector<Interaction *> *bond_ixs = bond->GetInteractions();
-// ixs_.insert(ixs_.end(), bond_ixs->begin(), bond_ixs->end());
-//}
-// return &ixs_;
-//}
+void Mesh::GetInteractions(std::vector<object_interaction> &ixs) {
+  for (bond_iterator bond = bonds_.begin(); bond != bonds_.end(); ++bond) {
+    std::vector<object_interaction> bond_ixs;
+    bond->GetInteractions(bond_ixs);
+    ixs.insert(ixs.end(), bond_ixs.begin(), bond_ixs.end());
+  }
+}
+
+/*std::vector<Interaction *> *Mesh::GetInteractions() {
+  for (bond_iterator bond = bonds_.begin(); bond != bonds_.end(); ++bond) {
+    std::vector<Interaction *> *bond_ixs = bond->GetInteractions();
+    ixs_.insert(ixs_.end(), bond_ixs->begin(), bond_ixs->end());
+  }
+  return &ixs_;
+}*/
 
 void Mesh::ClearInteractions() {
   for (bond_iterator bond = bonds_.begin(); bond != bonds_.end(); ++bond) {

@@ -78,6 +78,7 @@ struct species_parameters<species_id::filament>
   int orientation_corr_n_steps = 1000;
   bool crossing_analysis = false;
   bool flocking_analysis = false;
+  bool anisotropy_density_analysis = false;
   double flock_polar_min = 0.5;
   double flock_contact_min = 0.5;
   bool highlight_flock = false;
