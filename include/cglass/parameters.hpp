@@ -32,6 +32,8 @@ struct species_parameters<species_id::rigid_filament>
   bool stationary_flag = false;
   double packing_fraction = -1;
   int n_equil = 0;
+  bool anisotropy_density_analysis = false;
+  double peclet_number = -1;
 };
 typedef species_parameters<species_id::rigid_filament> rigid_filament_parameters;
 

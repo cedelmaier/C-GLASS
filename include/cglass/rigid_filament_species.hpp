@@ -3,6 +3,9 @@
 
 #include "rigid_filament.hpp"
 #include "species.hpp"
+#include "rigid_filament_anisotropy_density_analysis.hpp"
+
+typedef Analysis<RigidFilament, species_id::rigid_filament> RigidFilamentAnalysis;
 
 class RigidFilamentSpecies
     : public Species<RigidFilament, species_id::rigid_filament> {
@@ -18,6 +21,7 @@ class RigidFilamentSpecies
 
   void Reserve();
   void UpdatePositions();
+  void LoadAnalysis();
   // Redundant for filaments.
   virtual void CenteredOrientedArrangement() {}
 };

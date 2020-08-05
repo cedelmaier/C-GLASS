@@ -50,10 +50,12 @@ void SpherocylinderSpecies::InitDiffusionAnalysis() {
   }
   vcf_ = new double[time_avg_interval_];
   msd_ = new double[time_avg_interval_];
+  pressure_ = new double[time_avg_interval_];
   vcf_err_ = new double[time_avg_interval_];
   msd_err_ = new double[time_avg_interval_];
   std::fill(msd_, msd_ + time_avg_interval_, 0.0);
   std::fill(vcf_, vcf_ + time_avg_interval_, 0.0);
+  std::fill(pressure_, pressure_ + time_avg_interval_, 0.0);
   std::fill(msd_err_, msd_err_ + time_avg_interval_, 0.0);
   std::fill(vcf_err_, vcf_err_ + time_avg_interval_, 0.0);
   UpdateInitPositions();
@@ -63,6 +65,7 @@ void SpherocylinderSpecies::DiffusionAnalysis() {
   // Calculate MSD
   CalculateMSD();
   CalculateVCF();
+  CalculatePressure();
   if (++time_ == time_avg_interval_) {
     time_ = 0;
     UpdateInitPositions();
@@ -124,6 +127,14 @@ void SpherocylinderSpecies::CalculateVCF() {
   vcf_err_[time_] += 1.0 / stdev2;
 }
 
+void SpherocylinderSpecies::CalculatePressure() {
+   double vir = 0;
+   for (int i = 0; i < n_members_; ++i) {
+     vir += members_[i].GetVirial();     
+   }
+   pressure_[time_] += vir/2.0; //divided by 2 because I double-counted.
+}
+
 void SpherocylinderSpecies::FinalizeDiffusionAnalysis() {
   for (int t = 0; t < time_avg_interval_; ++t) {
     msd_[t] = msd_[t] / msd_err_[t];
@@ -149,7 +160,7 @@ void SpherocylinderSpecies::FinalizeDiffusionAnalysis() {
   for (int t = 0; t < time_avg_interval_; ++t) {
     diff_file_ << midterm * (t + 1) * params_->delta * GetNPosit() << " "
                << msd_[t] << " " << msd_err_[t] << " " << vcf_[t] << " "
-               << vcf_err_[t] << "\n";
+               << vcf_err_[t] << <<"\n";
   }
   diff_file_.close();
 

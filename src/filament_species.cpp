@@ -5,6 +5,9 @@ FilamentSpecies::FilamentSpecies(unsigned long seed) : Species(seed) {
 }
 void FilamentSpecies::Init(std::string spec_name, ParamsParser &parser) {
   Species::Init(spec_name, parser);
+  if (GetNInsert() <= 0) {
+    return; // don't show warnings if no filaments are inserted
+  }
   fill_volume_ = 0;
   packing_fraction_ = sparams_.packing_fraction;
 #ifdef TRACE
@@ -304,8 +307,8 @@ void FilamentSpecies::LoadAnalysis() {
     FilamentAnalysis *crossing = new BarrierCrossingAnalysis;
     analysis_.push_back(crossing);
   }
-  if (sparams_.anisotropy_density_analysis) {
+  /*if (sparams_.anisotropy_density_analysis) {
     FilamentAnalysis *anisotropy = new AnisotropyDensityAnalysis;
     analysis_.push_back(anisotropy);
-  }
+  }*/
 }

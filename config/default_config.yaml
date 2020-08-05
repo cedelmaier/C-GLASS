@@ -135,7 +135,10 @@ rigid_filament:
   packing_fraction: [-1, double]    # if num > 0, and packing fraction > 0, filaments are inserted
   #                                  # until the ratio filament to system volumes match this value.
   n_equil: [0, int]                 # internal filament parameter used for shuffling.
-
+  anisotropy_density_analysis: [false, bool] # post-process analysis of virial anisotropy density per
+                                             # interaction as a function of separation (see Blackwell
+                                             # 2016)
+  peclet_number: [-1, double]        # ratio of active transport to diffusive transport. changes
 filament:                            # Parameters unique to filament class of objects.
   packing_fraction: [-1, double]    # if num > 0, and packing fraction > 0, filaments are inserted
   persistence_length: [400, double]  # persistence length of filament.

@@ -15,7 +15,7 @@ void RigidFilament::SetParameters() {
   min_length_ = sparams_->min_length;
   zero_temperature_ = params_->zero_temperature;  // include thermal forces
   eq_steps_count_ = 0;
-
+  peclet_number_ = sparams_ -> peclet_number;
   /* Refine parameters */
 }
 
@@ -69,13 +69,17 @@ void RigidFilament::InsertRigidFilament(std::string insertion_type,
     SetPosition(bonds_.back().GetPosition());
     SetOrientation(bonds_.back().GetOrientation());
     UpdateBondPositions();
-  } else if (insertion_type.compare("random_oriented") == 0) {
-    AddRandomBondAnywhere(length_, diameter_);
-    double orient[3] = {0};
-    orient[n_dim_ - 1] = 1.0;
-    bonds_.back().SetOrientation(orient);
+  } else if (insertion_type.compare("random_oriented") == 0 ||
+    insertion_type.compare("random_nematic") == 0) {
+    std::fill(orientation_, orientation_ + 3, 0.0);
+    if (insertion_type.compare("random_oriented") == 0) {
+      orientation_[n_dim_ - 1] = 1.0;
+    } else {
+      // randomly choose between (0,1,0) and (0,-1,0)
+      orientation_[n_dim_ - 1] = (rng_.RandomUniform() > .5 ? 1.0 : -1.0);
+    }
+    InitRandomBondOriented(orientation_, diameter_);
     SetPosition(bonds_.back().GetPosition());
-    SetOrientation(bonds_.back().GetOrientation());
     UpdateBondPositions();
   } else {
     Logger::Error("Rigid Filament insertion type not recognized!");

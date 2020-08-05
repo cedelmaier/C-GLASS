@@ -582,13 +582,22 @@ void Mesh::GetInteractions(std::vector<object_interaction> &ixs) {
   }
 }
 
-/*std::vector<Interaction *> *Mesh::GetInteractions() {
+double Mesh::GetVirial() {
+  double vir = 0;
   for (bond_iterator bond = bonds_.begin(); bond != bonds_.end(); ++bond) {
-    std::vector<Interaction *> *bond_ixs = bond->GetInteractions();
-    ixs_.insert(ixs_.end(), bond_ixs->begin(), bond_ixs->end());
+    std::vector<object_interaction> bond_ixs;
+    bond->GetInteractions(bond_ixs);
+    for (auto ix = bond_ixs.begin(); ix != bond_ixs.end(); ++ix) {
+      if (ix->first->obj1->GetMeshID() == ix->first->obj2->GetMeshID()) {
+        continue; //eliminate same filament interactions
+      }
+      for (int i = 0; i < 3; ++i) {
+        vir += ix->first->force[i]*ix->first->dr[i];
+      }
+    }
   }
-  return &ixs_;
-}*/
+  return 1;
+}
 
 void Mesh::ClearInteractions() {
   for (bond_iterator bond = bonds_.begin(); bond != bonds_.end(); ++bond) {

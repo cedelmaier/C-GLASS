@@ -17,6 +17,8 @@
   default_config["rigid_filament"]["stationary_flag"] = "false";
   default_config["rigid_filament"]["packing_fraction"] = "-1";
   default_config["rigid_filament"]["n_equil"] = "0";
+  default_config["rigid_filament"]["anisotropy_density_analysis"] = "false";
+  default_config["rigid_filament"]["peclet_number"] = "-1";
   default_config["filament"]["packing_fraction"] = "-1";
   default_config["filament"]["persistence_length"] = "400";
   default_config["filament"]["perlen_ratio"] = "-1";

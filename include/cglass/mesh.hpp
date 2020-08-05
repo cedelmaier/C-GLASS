@@ -64,6 +64,7 @@ class Mesh : public Object {
   Bond *GetBond(int i);
   virtual void ZeroForce();
   virtual void GetInteractors(std::vector<Object *> &ix);
+  virtual double GetVirial();
   virtual int GetCount();
   virtual void ReadPosit(std::fstream &ip);
   virtual void WritePosit(std::fstream &op);
@@ -77,7 +78,6 @@ class Mesh : public Object {
   virtual void ZeroDrTot();
   virtual void SetPosition(double const *const new_pos);
   virtual void GetInteractions(std::vector<object_interaction> &ixs);
-  //virtual std::vector<Interaction *> *GetInteractions();
   virtual void ClearInteractions();
   virtual void GetAvgPosition(double *ap);
   virtual void GetAvgScaledPosition(double *asp);

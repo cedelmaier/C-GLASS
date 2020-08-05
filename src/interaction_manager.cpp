@@ -703,6 +703,7 @@ bool InteractionManager::CheckBoundaryConditions(std::vector<Object *> &ixors) {
 void InteractionManager::InteractionAnalysis() {
   if (run_interaction_analysis_) {
     ForceUpdate();
+    Logger::Trace("Richelle");
     CalculateInteractions();
   }
 }

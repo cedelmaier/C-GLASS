@@ -258,6 +258,10 @@ species_base_parameters *parse_species_params(std::string sid,
       params.packing_fraction = jt->second.as<double>();
       } else if (param_name.compare("n_equil")==0) {
       params.n_equil = jt->second.as<int>();
+      } else if (param_name.compare("anisotropy_density_analysis")==0) {
+      params.anisotropy_density_analysis = jt->second.as<bool>();
+      } else if (param_name.compare("peclet_number")==0) {
+      params.peclet_number = jt->second.as<double>();
       } else {
         Logger::Warning("Unrecognized %s parameter: '%s'", sid.c_str(), param_name.c_str());
       }

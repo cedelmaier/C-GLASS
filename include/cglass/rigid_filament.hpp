@@ -17,6 +17,7 @@ class RigidFilament : public Mesh {
   double body_frame_[6];
   double min_length_ = 0;
   double max_length_ = 1000;
+  double peclet_number_ = -1;  
 
   bool zero_temperature_ = false;
   int n_step_ = 0;

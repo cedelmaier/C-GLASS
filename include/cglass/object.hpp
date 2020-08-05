@@ -137,6 +137,7 @@ public:
   virtual const double GetInteractorDiameter();
   virtual const double GetInteractorLength();
   virtual const double GetVolume();
+  virtual double GetVirial();
   virtual void UpdateDrTot();
   virtual const double GetDrTot();
   virtual void ZeroDrTot();

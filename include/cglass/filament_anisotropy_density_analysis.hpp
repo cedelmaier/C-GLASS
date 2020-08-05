@@ -1,4 +1,4 @@
-#ifndef _CGLASS_FILAMENT_ANISOTROPY_DENSITY_ANALYSIS_H_
+/*#ifndef _CGLASS_FILAMENT_ANISOTROPY_DENSITY_ANALYSIS_H_
 #define _CGLASS_FILAMENT_ANISOTROPY_DENSITY_ANALYSIS_H_
 
 #include "analysis.hpp"
@@ -35,4 +35,4 @@ protected:
   }
   void EndAnalysis() {}
 };
-#endif 
+#endif */

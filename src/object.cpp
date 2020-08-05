@@ -292,6 +292,15 @@ double const Object::GetVolume() {
   }
   return -1;
 }
+double Object::GetVirial() {
+  double vir = 0;
+  for (auto ix = ixs_.begin(); ix != ixs_.end(); ++ix) {
+    for (int i = 0; i < 3; ++i) {
+      vir += ix->first->force[i]*ix->first->dr[i];
+    }
+  }
+  return 3;
+}
 double const Object::GetDrTot() {
   UpdateDrTot();
   return dr_tot_;

@@ -10,6 +10,9 @@ tags
 /*.dat
 /*.xyz
 /data
+/soft_matter_motor
+/rigid_test
+/diffusion_test
 *ipynb_checkpoints
 .DS_Store
 bin
@@ -22,7 +25,7 @@ analysis/data*
 *.mse2e
 *.error
 *.theta
-*.spec
+#*.spec
 *.checkpoint
 *.spiral
 *.global_order

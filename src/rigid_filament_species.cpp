@@ -109,6 +109,12 @@ void RigidFilamentSpecies::PopMember() {
   Species::PopMember();
 }
 
+void RigidFilamentSpecies::LoadAnalysis() {
+  if (sparams_.anisotropy_density_analysis) {
+    RigidFilamentAnalysis *anisotropy = new AnisotropyDensityAnalysis;
+    analysis_.push_back(anisotropy);
+  }
+}
 // const double RigidFilamentSpecies::GetSpecLength() const {
 //  if (sparams_.dynamic_instability_flag) {
 //    return 2 * sparams_.min_bond_length;
