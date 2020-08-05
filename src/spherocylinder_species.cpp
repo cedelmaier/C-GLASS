@@ -160,7 +160,7 @@ void SpherocylinderSpecies::FinalizeDiffusionAnalysis() {
   for (int t = 0; t < time_avg_interval_; ++t) {
     diff_file_ << midterm * (t + 1) * params_->delta * GetNPosit() << " "
                << msd_[t] << " " << msd_err_[t] << " " << vcf_[t] << " "
-               << vcf_err_[t] << <<"\n";
+               << vcf_err_[t] <<"\n";
   }
   diff_file_.close();
 
